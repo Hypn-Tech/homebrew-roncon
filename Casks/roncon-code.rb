@@ -13,14 +13,6 @@ cask "roncon-code" do
 
   binary "#{appdir}/Roncon Code.app/Contents/MacOS/roncon-code", target: "roncon-code"
 
-  postflight do
-    # Create roncon alias
-    system_command "/bin/ln", args: ["-sf", "#{staged_path}/Roncon Code.app/Contents/MacOS/roncon-code", "/usr/local/bin/roncon"], sudo: false
-  end
-
-  uninstall delete: "/usr/local/bin/roncon-code",
-            delete: "/usr/local/bin/roncon"
-
   zap trash: [
     "~/.roncon",
   ]
